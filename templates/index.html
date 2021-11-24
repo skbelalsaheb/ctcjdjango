@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home Page - CTCJ
+{% endblock title %}
+
+{% block body %}
+    <div class="jumbotron">
+
+        <div class="container">
+            <div class="row">
+                <div class="col"><h1 class="display-4">Hello, Admin!</h1>
+                    <p class="lead">CTCJ Student Data</p>
+                    <hr class="my-4">
+                    <p>Hello Admin Add Your Students Here</p>
+                    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></div>
+                <div class="col-md-8">
+
+                    <div class="container">
+                        <form method="post" action="/">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="form-group">
+                                        <label for="name">Full Name</label>
+                                        <input type="text" class="form-control" id="name"
+                                               aria-describedby="emailHelp" name="name">
+                                        <small id="emailHelp" class="form-text text-muted">We'll never share your info
+                                            with
+                                            anyone else.</small>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email"
+                                               name="email">
+
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="number" class="form-control" id="phone"
+                                               name="phone">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="form-group">
+                                        <label for="batch">Select Batch</label>
+                                        <select class="form-control" id="batch" name="batch">
+                                            <option>Select Choice</option>
+                                            <option value="Django">Django</option>
+                                            <option value="Flutter">Flutter</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-group">
+                                        <label for="sid">Student Id</label>
+                                        <input type="text" class="form-control" id="sid"
+                                               name="sid">
+
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-group">
+                                        <label for="batch">Select Stream</label>
+                                        <select class="form-control" id="batch" name="stream">
+                                            <option>Select Choice</option>
+                                            <option value="Bca">BCA</option>
+                                            <option value="Bsc">B.sc</option>
+                                            <option value="Msc">M.sc</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary float-right">Save Data</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+     {% if data%}
+        <table class="container table table-dark m-4 p-3">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Batch</th>
+                <th scope="col">Student ID</th>
+                <th scope="col">Stream</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            {% for i in data %}
+                <tr>
+                    <th scope="row">{{ i.indexes }}</th>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.phone }}</td>
+                    <td>{{ i.batch }}</td>
+                    <td>{{ i.sid }}</td>
+                    <td>{{ i.stream }}</td>
+                </tr>
+            {% endfor %}
+
+                {% else %}
+              <center>  <h1>No Data Found</h1> </center>
+
+
+
+            </tbody>
+        </table>
+    {% endif %}
+    </div>
+
+
+{% endblock body %}
