@@ -17,7 +17,7 @@
                 <div class="col-md-8">
 
                     <div class="container">
-                        <form method="post" action="/">
+                        <form method="post" action="/" >
                             {% csrf_token %}
                             <div class="row">
                                 <div class="col-sm">
@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary float-right">Save Data</button>
+                            <button type="submit"  class="btn btn-primary float-right">Save Data</button>
                         </form>
                     </div>
                 </div>
@@ -125,6 +125,5 @@
         </table>
     {% endif %}
     </div>
-
 
 {% endblock body %}
